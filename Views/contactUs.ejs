@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerJX | Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/public/Assets/contactUsStyle.css" type="text/css">
+</head>
+
+<body>
+    <section>
+        <div class="card">
+            <div class="left">
+                <h1>Contact US</h1>
+                <form action="#">
+                    <div class="form-group">
+                        <label for="username">Username :</label>
+                        <input type="text" id="username" value="maruti" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message :</label>
+                        <textarea id="message" placeholder="Enter your message here..." rows="7"></textarea>
+                    </div>
+                    <button id="submit" type="button">Submit</button>
+                    <a href="http://localhost/user/myProfile" id="goToProfile">Go back to profile</a>
+                </form>
+            </div>
+            <div class="right">
+                <img src="http://localhost/public/Images/power-plant-1.jpg">
+                <div class="overlay">
+                    <p>Any question from your side or feedback will be appreciated</p>
+                    <p>Your message will be manually seen by damin and will recieve reply on registered email</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const input_message = document.getElementById("message");
+
+        const submit = document.getElementById("submit");
+        submit.addEventListener("click",function(event){
+            const message = input_message.value.trim();
+            if(message == ""){
+                return ;
+            }
+            console.log(message);
+
+            const requestLink = "http://localhost/user/contactUs"
+            fetch(requestLink,{
+                method: "POST",
+                headers: { "Content-type" : "application/json" },
+                body: JSON.stringify({
+                    message: message
+                })
+            }).then(function(res){
+                if(!res.ok){
+                    return res.json().then(function(json){
+                        Promise.reject(json);
+                    });
+                }
+                else{
+                    return res.json();
+                }
+            }).then(function(data){
+                if(data){
+                    console.log(data);
+                    alert("Your message has been recorded");
+                    window.location = "http://localhost/user/myProfile"
+                }
+            }).catch(function(err){
+                console.log(err);
+            })
+        });
+
+
+    </script>
+</body>
+
+</html>

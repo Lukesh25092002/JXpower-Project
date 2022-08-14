@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerJX | Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/Public/Assets/createAccountStyle.css" type="text/css">
+</head>
+
+<body>
+    <section>
+        <div class="card">
+            <div class="left">
+                <h1>Create Account</h1>
+                <form action="#">
+                    <div class="form-group">
+                        <label for="username">Username :</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password :</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button id="submit" type="button">Submit</button>
+                    <a href="http://localhost/userAuth/login" id="alreadyHaveAccount">already have an account?</a>
+                </form>
+            </div>
+            <div class="right">
+                <img src="http://localhost/public/Images/power-plant-1.jpg">
+                <div class="overlay">
+                    <p>The password that you are going to create has nothing to do with the password of Email Id</p>
+                    <p>They both may or maynoe be the same</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const input_username = document.getElementById("username");
+        const input_email = document.getElementById("email");
+        const input_password = document.getElementById("password");
+        console.log(input_username, input_email, input_password);
+        // the referer username will be in query of the cirrent page link
+        // We have to extract it before sending post request to the server and seend it with it in the query
+
+        const submit = document.getElementById("submit");
+        submit.addEventListener("click", function (event) {
+            const username = input_username.value;
+            const email = input_email.value;
+            const password = input_password.value;
+
+            if (!username || !email || !password) {
+                console.log("The fields cannot be empty");
+                return;
+            }
+
+            let requestLink = window.location.href;
+
+            fetch(requestLink, {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    password
+                })
+            }).then(function (res) {
+                if (res.ok) {
+                    return res.json();
+                }
+                else {
+                    return res.json().then(function (json) {
+                        Promise.reject(json);
+                    });
+                }
+            }).then(function (data) {
+                if(data){
+                    console.log("This is data",data);
+                    window.location = data['dynamic_link'];
+                }
+            }).catch(function (err) {
+                console.log("This is error",err);
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

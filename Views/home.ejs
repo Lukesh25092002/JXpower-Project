@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX Power | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/public/Assets/homeStyle.css" type="text/css">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <a class="button-standard" href="http://localhost/userAuth/login">Login</a>
+    </nav>
+    <header>
+        <h1>JX Power</h1>
+        <p>Static wealth will perish one day, Instead Grow your wealth with us</p>
+        <a class="button-standard" href="http://localhost/userAuth/createAccount">Get Started</a>
+    </header>
+
+    <section id="who-we-are" class="section-standard">
+        <h1 class="section-title">Who we are?</h1>
+        <div class="section-content">
+            <div class="left">
+                <p>We are a team of professional investers who know what they are doing</p>
+                <p>Instead of you picking niches and playing game with your hard earned money let us do the same but with
+                    proper planning and understanding of investing. Our experience will make sure that it will be more
+                    productive than you doing the same</p>
+                <p>We would invest your money in our decided niches and return you your money along with the profits but
+                    keeping a small portion of it for ourselves</p>
+                <p>It will be great partnership and both the parties can grow their money together</p>
+            </div>
+            <img class="right" src="http://localhost/public/Images/investor.jpg">
+        </div>
+    </section>
+
+    <section id="feature" class="section-standard">
+        <h1 class="section-title">Invest to grow your wealth</h1>
+        <div class="section-content">
+            <div class="feature-card">
+                <img src="http://localhost/public/Images/growth.jpg">
+                <p>We will handle all tasks</p>
+            </div>
+            <div class="feature-card">
+                <img src="http://localhost/public/Images/worries.jpg">
+                <p>Leave all your worries up to us</p>
+            </div>
+            <div class="feature-card">
+                <img src="http://localhost/public/Images/profits.jpg">
+                <p>Enjoy all the profits of your investment</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="investing-takes-time" class="section-standard">
+        <h1 class="section-title">Investing takes time...</h1>
+        <div class="section-content">
+            <div class="left">
+                <p>We have short term as well as long term plans.</p>
+                <p>You can buy not more than two plans at a time. After they expire then you can buy another. You can
+                    buy one short term plan and one long term plan at a time</p>
+                <p>Become a part of this investing family and let us both grow</p>
+            </div>
+            <img src="http://localhost/public/Images/sand-watch.jpg" class="right">
+        </div>
+    </section>
+
+    <section id="how-to-invest" class="section-standard">
+        <h1 class="section-title">How to invest?</h1>
+        <div class="section-content">
+            <div class="left">
+                <p>Login to our website and then you can see all the options which we invest in and you can choose from
+                    them yourself</p>
+                <p>Add money to your account and buy plans from it</p>
+                <p>As per mentioned in the plans you will recieve your daily income of a specific amount for a specific
+                    duration</p>
+                <p>At time of withdrawl. You request for 350 INR at a time per day. Our team will approve your request
+                    and will send the amount to your bank account</p>
+            </div>
+            <img src="http://localhost/public/Images/question.jpg" class="right">
+        </div>
+    </section>
+
+    <section id="got-stuck" class="section-standard">
+        <h1 class="section-title">What if you get stuck in between?</h1>
+        <div class="section-content">
+            <div class="left">
+                <p>We have a team that will be handling your problems</p>
+                <p>There is a contact us form which is accessible once you login and become a part of our group<br>Your
+                    questions or doubts will be answered by us in less than a day</p>
+                <p>There is no restrictions on asking questions as many as you want. We are here to help</p>
+            </div>
+            <img src="http://localhost/public/Images/telephone.jpg" class="right">
+        </div>
+    </section>
+
+    <div class="copyright">
+        <p>2022 Copyright JX Power. All Rights Reserved.</p>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" integrity="sha512-v8B8T8l8JiiJRGomPd2k+bPS98RWBLGChFMJbK1hmHiDHYq0EjdQl20LyWeIs+MGRLTWBycJGEGAjKkEtd7w5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Main heading
+        gsap.from("header h1", { opacity: 0, scale: 3, duration: 2 });
+
+        // who-we-are section image
+        gsap.from("#who-we-are .right", { opacity: 0, x: 100, duration: 1 });
+
+        // feature section cards
+        gsap.from('#feature .feature-card img',{scrollTrigger: {
+            trigger: '#feature',
+            start: "top 75%",
+            end: "bottom top",
+        },y: 100,opacity: 0.5,duration:1});
+
+        // investing-takes-time section immage
+        gsap.from('#investing-takes-time .right',{scrollTrigger: {
+            trigger: '#investing-takes-time',
+            start: "top 75%",
+            end: "bottom top",
+        },x: 100,opacity: 0,duration:1});
+
+        // how-to-invest section immage
+        gsap.from('#how-to-invest .right',{scrollTrigger: {
+            trigger: '#how-to-invest',
+            start: "top 75%",
+            end: "bottom top",
+        },x: 100,opacity: 0,duration:1});
+
+        // got-stuck section image
+        gsap.from('#got-stuck .right',{scrollTrigger: {
+            trigger: '#got-stuck',
+            start: "top 75%",
+            end: "bottom top",
+        },x: 100,opacity: 0,duration:1});
+
+
+    </script>
+</body>
+
+</html>

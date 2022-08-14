@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX Power | All Plans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/public/Assets/allPlansStyle.css">
+</head>
+<body>
+
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <a class="button-standard" href="http://localhost/user/myProfile">profile</a>
+    </nav>
+    <header>
+        <div class="title">
+            <h1>Choose from the following plans that...</h1>
+            <h1>Best Suits YOU!</h1>
+        </div>
+        <div class="attraction">
+            <p>Static money is of no use</p>
+            <p>Invest to grow more</p>
+            <p>Choose a plan and become a part of power charge group</p>
+        </div>
+    </header>
+    <section id="long-term-plans" class="section-standard">
+        <h2 class="section-title">Long Term Plans</h2>
+        <div class="section-content">
+            <div class="plan-card" data-uid="62c09e55b54ca887359b2ba4">
+                <div class="plan-name">POWER JXS</div>
+                    <img class="picture" src="http://localhost/public/Images/power-plant-1.jpg">
+                    <div class="content">
+                        <p>Daily Income:</p>
+                        <p>₹30</p>
+                    </div>
+                    <div class="content">
+                        <p>Total income:</p>
+                        <p>₹5400</p>
+                    </div>
+                    <div class="content">
+                        <p>Serving time:</p>
+                        <p>180 Days</p>
+                </div>
+                <button id="JXS" class="button-standard">₹10</button>
+            </div>
+            <div class="plan-card" data-uid="62c09e55b54ca887359b2ba6">
+                <div class="plan-name">POWER JXM</div>
+                    <img class="picture" src="http://localhost/public/Images/power-plant-2.jpg">
+                    <div class="content">
+                        <p>Daily Income:</p>
+                        <p>₹120</p>
+                    </div>
+                    <div class="content">
+                        <p>Total income:</p>
+                        <p>₹21,600</p>
+                    </div>
+                    <div class="content">
+                        <p>Serving time:</p>
+                        <p>180 Days</p>
+                </div>
+                <button id="JXM" class="button-standard">₹500</button>
+            </div>
+            <div class="plan-card" data-uid="62c09e55b54ca887359b2baf">
+                <div class="plan-name">POWER JXE</div>
+                    <img class="picture" src="http://localhost/public/Images/power-plant-3.jpg">
+                    <div class="content">
+                        <p>Daily Income:</p>
+                        <p>₹ 250</p>
+                    </div>
+                    <div class="content">
+                        <p>Total income:</p>
+                        <p>₹ 45000</p>
+                    </div>
+                    <div class="content">
+                        <p>Serving time:</p>
+                        <p>180 Days</p>
+                </div>
+                <button id="JXE" class="button-standard">₹1,000</button>
+            </div>
+        </div>
+        <p class="notice">More plans comming up in future...</p>
+    </section>
+
+
+    <section id="short-term-plans" class="section-standard">
+        <h2 class="section-title">Short Term Plans</h2>
+        <div class="section-content">
+            <div class="plan-card" data-uid="62c09e55b54ca887359b2ba8">
+                <div class="plan-name">SPECIAL PLAN A</div>
+                    <img class="picture" src="http://localhost/public/Images/power-plant-4.jpg">
+                    <div class="content">
+                        <p>Daily Income:</p>
+                        <p>₹1,000</p>
+                    </div>
+                    <div class="content">
+                        <p>Total income:</p>
+                        <p>₹10,000</p>
+                    </div>
+                    <div class="content">
+                        <p>Serving time:</p>
+                        <p>10 Days</p>
+                </div>
+                <button id="A" class="button-standard">₹2,000</button>
+            </div>
+            <div class="plan-card" data-uid="62c09e55b54ca887359b2bab">
+                <div class="plan-name">SPECIAL PLAN B</div>
+                    <img class="picture" src="http://localhost/public/Images/power-plant-5.jpg">
+                    <div class="content">
+                        <p>Daily Income:</p>
+                        <p>₹4,000</p>
+                    </div>
+                    <div class="content">
+                        <p>Total income:</p>
+                        <p>₹40,000</p>
+                    </div>
+                    <div class="content">
+                        <p>Serving time:</p>
+                        <p>10 Days</p>
+                </div>
+                <button id="B" class="button-standard">₹5,000</button>
+            </div>
+        </div>
+        <p class="notice">More plans comming up in future...</p>
+    </section>
+
+    <script>
+        const plansCards = [...document.querySelectorAll(".plan-card")];
+
+        plansCards.forEach(function(planCard){
+            const planID = planCard.dataset['uid'];
+            const buy = planCard.querySelector("button");
+
+            buy.addEventListener("click",function(event){
+                const assured = confirm(`Are you sure you want to buy ${planCard.querySelector(".plan-name").innerHTML} ?
+You have to stick to this plan till it expires...`);
+                if(!assured){
+                    return ;
+                }
+
+                const requestLink = `http://localhost/user/plans`;
+                const dubLink = "http://localhost/timepass";
+                fetch(requestLink,{
+                    method: "POST",
+                    headers: { "Content-type" : "application/json" },
+                    body: JSON.stringify({
+                        planID: planID
+                    })
+                }).then(function(res){
+                    if(!res.ok){
+                        return res.json().then(function(json){
+                            return Promise.reject(json);
+                        });
+                    }
+                    else{
+                        return res.json();
+                    }
+                }).then(function(data){
+                    if(data){
+                        console.log(data);
+                        window.location = "http://localhost/user/currentPlans";
+                    }
+                }).catch(function(err){
+                    console.log("There was an error");
+                })
+            });
+        });
+
+    </script>
+</body>
+</html>

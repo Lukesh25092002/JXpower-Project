@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            padding: 8px 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn-checkout">Checkout</button>
+    <script>
+        const btn_checkout = document.getElementById("btn-checkout");
+        btn_checkout.addEventListener("click", function (event) {
+            fetch("http://localhost/create-checkout-session",{
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    items: [
+                        {id: 1,quantity: 3},
+                        {id:2,quantity: 1}
+                    ]
+                })
+            })
+            .then(function(res){
+                if(res.ok){
+                    return res.json();
+                }
+                else{
+                    return res.json().then(function(json){
+                        return Promise.reject(json);
+                    });
+                }
+            })
+            .then(function(data){
+                console.log("This is done");
+                const newURL = data.url;
+                window.location = newURL;
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+        });
+    </script>
+</body>
+
+</html>

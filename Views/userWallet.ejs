@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX Power | User Wallet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/public/Assets/userWalletStyle.css" type="text/css">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <a class="button-standard" href="http://localhost/user/myProfile">Profile</a>
+    </nav>
+
+    <section class="section-standard">
+        <img class="wallet-icon" src="http://localhost/public/Images/wallet-icon.png">
+        <h1 class="section-title">Wallet Balance</h1>
+        <div class="section-content">
+            <div class="left">
+                <div class="balance">
+                    <p>₹ <%= balanceAmount %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <div class="button-container-single">
+                <button id="credit" class="button-standard">Add money</button>
+                <p>Add Rs. 350 to wallet</p>
+            </div>
+
+            <div class="button-container-single">
+                <a class="button-standard" href="http://localhost/user/wallet/debit">Withdraw Money</a>
+                <p>Withdraw Rs. 350 from wallet</p>
+            </div>
+        </div>
+    </section>
+    <div class="information">
+        <p>• 24*7 Auto</p>
+        <p>• Limits on Daily Requests</p>
+        <p>• Fixed ₹350 credit/debit</p>
+        <p>• 20% Fees</p>
+        <p>• Manual Payments</p>
+        <p>• Arrive in 24 Hrs</p>
+    </div>
+
+    <script>
+        const display = document.querySelector("body");
+        function blockDisplay(){
+            display.style.opacity = 0.75;
+        }
+
+        function unblockDisplay(){
+            display.style.opacity = 1;
+        }
+
+        const credit = document.getElementById("credit");
+        credit.addEventListener("click",function(event){
+            blockDisplay();
+            const requestLink = "http://localhost/user/wallet/credit";
+            fetch(requestLink,{
+                method: "GET"
+            }).then(function(res){
+                unblockDisplay();
+                if(!res.ok){
+                    return res.json().then(function(json){
+                        return Promise.reject(json);
+                    });
+                }
+                return res.json();
+            }).then(function(data){
+                console.log("This is a successful message");
+                console.log(data);
+                window.location = data.redirectURL;
+            }).catch(function(err){
+                console.log("There was error");
+                console.log(err);
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX Power | Admin | Panel</title>
+    <link rel="stylesheet" href="http://localhost/public/Assets/adminPanelStyle.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <button id="logout" class="button-standard">Logout</button>
+    </nav>
+
+    <header id="upper" class="section-standard">
+        <h1 class="section-title">This is admin Panel</h1>
+        <div class="section-content">
+            <div class="profile">
+                <div class="photo">
+                    <img class="photo" src="http://localhost/public/uploads/<%= photo %>">
+                </div>
+                <div><%= username %></div>
+                <p><%= email %></p>
+            </div>
+            <div class="statistics-container">
+                <div class="statistics-card">
+                    <h1>Total Users</h1>
+                    <p>
+                        <%= totalUsers %>
+                    </p>
+                    <a class="button-standard" href="http://localhost/admin/userInformation">view all . . .</a>
+                </div>
+                <div class="statistics-card">
+                    <h1>Total Purchases</h1>
+                    <p>
+                        <%= totalPurchases %>
+                    </p>
+                    <a class="button-standard" href="http://localhost/admin/planInformation">view all . . .</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="payments" class="section-standard">
+        <h1 class="section-title">Send Money to user who have requested withdrawal</h1>
+        <a class="button-standard" href="http://localhost/admin/payments">Payments >></a>
+    </section>
+
+    <script>
+        const display = document.querySelector("body");
+
+        const logout = document.getElementById("logout");
+        logout.addEventListener("click", function (event) {
+            const requestLink = "http://localhost/adminAuth/logout";
+            fetch(requestLink, {
+                method: "POST",
+            }).then(function (res) {
+                if (!res.ok) {
+                    return res.json().then(function (data) {
+                        return Promise.reject(data);
+                    });
+                }
+                return res.json();
+            }).then(function(data){
+                window.location = "http://localhost/adminAuth/login";
+            }).catch(function(err){
+                console.log("There was some error");
+                console.log(err);
+            });
+        });
+
+    </script>
+</body>
+
+</html>

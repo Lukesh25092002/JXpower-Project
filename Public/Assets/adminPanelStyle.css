@@ -1,0 +1,195 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat','sans-serif';
+    color: white;
+    font-size: 16px;
+}
+
+body {
+    background: url("http://localhost/public/Images/yellow-database.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.button-standard {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background: #00A3FE;
+    padding: 9px 32px;
+    border-radius: 5px;
+}
+
+.button-standard:hover {
+    transform: 300ms;
+    box-shadow: 0 0 0 2px #012965, 0 0 0 3px #00A3FE;
+    color: #FFD700;
+}
+
+.button-standard:active {
+    box-shadow: 0 0 0 3px #00A3FE;
+    background: #012965;
+}
+
+.section-standard {
+    padding: 50px 150px;
+    background: #002047;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-title {
+    color: #FFD700;
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+.section-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-content .left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section-content a {
+    height: 35px;
+    box-sizing: border-box;
+}
+
+
+
+nav {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 150px;
+    box-sizing: border-box;
+}
+
+nav .logo {
+    cursor: pointer;
+    width: 100px;
+}
+
+#logout{
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width:750px) {
+    nav {
+        padding: 5px 50px;
+    }
+}
+
+#upper{
+    margin-top: 0px;
+    background: #012965;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile .photo{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #105177;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.photo img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    border: none;
+    transform: scale(1.1);
+}
+
+.statistics-container{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    justify-content: center;
+}
+
+.statistics-card{
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 217, 0, 0.4);
+    border-radius: 7px;
+    background: #002047;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.statistics-card h1{
+    color: gold;
+}
+
+.statistics-card p{
+    font-size: 64px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.statistics-card a{
+    padding: 7px 35px;
+    border-radius: 50px;
+}
+
+#payments{
+    margin-top: 70px;
+}
+
+@media (max-width: 750px){
+    .section-standard{
+        padding: 30px 5px;
+    }
+
+    .section-content{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #payments .section-title{
+        padding: 0 15px;
+        font-size: 20px;
+    }
+
+    .statistics-container{
+        gap: 13px;
+    }
+
+    #payments a{
+        display: block;
+        width: 150px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .statistics-card{
+        padding: 15px;
+        box-shadow: 0 0 7px rgba(255, 217, 0, 0.3);
+    }
+
+    .statistics-card p{
+        font-size: 32px;
+    }
+}

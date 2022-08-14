@@ -1,0 +1,192 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat','sans-serif';
+    color: white;
+}
+
+body {
+    background: url("http://localhost/public/Images/green-database.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.button-standard {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background: #00A3FE;
+    padding: 9px 32px;
+    border: none;
+    border-radius: 5px;
+}
+
+.button-standard:hover {
+    transform: 300ms;
+    box-shadow: 0 0 0 2px #012965, 0 0 0 3px #00A3FE;
+    color: #FFD700;
+}
+
+.button-standard:active {
+    box-shadow: 0 0 0 3px #00A3FE;
+    background: #012965;
+}
+
+nav {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 150px;
+    box-sizing: border-box;
+}
+
+nav .logo {
+    cursor: pointer;
+    width: 100px;
+}
+
+@media (max-width:750px) {
+    nav {
+        padding: 5px 50px;
+    }
+}
+
+.section-standard {
+    padding: 50px 0px;
+    background: #002047;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-title {
+    color: #FFD700;
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+.nothing{
+    font-weight: normal;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+    color: greenyellow;
+}
+
+.withdraw-request{
+    width: 100%;
+    border-top: 2px solid white;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.withdraw-request:hover{
+    background-color: #0129654d;
+}
+
+.withdraw-request .profile{
+    width: 300px;
+    text-align: center;
+    padding: 20px 10px;
+    background: #012965;
+}
+
+.profile .photo{
+    height: 150px;
+    width: 150px;
+    border: 5px solid #105177;
+    border-radius: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.profile .photo img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    display: block;
+    transform: scale(1.1);
+}
+
+.withdraw-request .content{
+    width: 100%;
+    padding: 30px 110px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .attributes p,.content .seperation p{
+    color: gold;
+}
+
+.content .attributes p,.content .values p,.content .seperation p{
+    margin: 5px 0;
+}
+.withdraw-request .details{
+    background-color: #012965;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.withdraw-request .delete{
+    cursor: pointer;
+}
+
+.end{
+    font-size: 10px;
+    margin-top: 30px;
+    text-align: center;
+    display: block;
+}
+
+@media (max-width: 750px){
+    .withdraw-request{
+        font-size: 10px;
+        gap: 0;
+    }
+
+    .withdraw-request .profile{
+        width: 100px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .withdraw-request .profile p{
+        font-size: 7px;
+    }
+
+    .profile .photo{
+        height: 70px;
+        width: 70px;
+    }
+
+    .withdraw-request .content{
+        padding: 0;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .withdraw-request .details{
+        width: 100%;
+        padding: 10px 10px;
+        padding-left: 0;
+        box-sizing: border-box;
+    }
+
+    .withdraw-request .delete{
+        margin-bottom: 20px;
+    }
+}

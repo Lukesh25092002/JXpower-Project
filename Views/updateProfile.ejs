@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX Power | User | change details</PowerJX-login>
+    </title>
+    <link rel="stylesheet" href="http://localhost/public/Assets/updateProfileStyle.css">
+</head>
+
+<body>
+    <section>
+        <div class="card">
+            <div class="left">
+                <h1>Change details</h1>
+                <form action="http://localhost/timepass" method="POST">
+                    <!-- <div class="form-group">
+                        <label for="photo">Profile picture :</label>
+                        <input type="file" name="profile-picture" id="photo" required>
+                    </div>  -->
+                    <div class="form-group">
+                        <label for="firstname">First Name :</label>
+                        <input type="text" name="firstname" id="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name :</label>
+                        <input type="text" name="lastname" id="lastname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age :</label>
+                        <input type="number" name="age" id="age" required>
+                    </div>
+                    <button id="submit" type="button">Submit</button>
+                </form>
+            </div>
+            <div class="right">
+                <img src="http://localhost/public/Images/power-plant-1.jpg">
+                <div class="overlay">
+                    <p>The password that you are going to create has nothing to do with the password of Email Id</p>
+                    <p>They both may or maynoe be the same</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const display = document.querySelector("body");
+        //const input_file = document.getElementById("photo");    // I am not sure about this as it is a file
+        const input_firstname = document.getElementById("firstname");
+        const input_lastname = document.getElementById("lastname");
+        const input_age = document.getElementById("age");
+
+        const submit = document.getElementById("submit");
+        submit.addEventListener("click", function (event) {
+            display.style.opacity = 0.75;
+            const firstname = input_firstname.value;
+            const lastname = input_lastname.value;
+            const age = input_age.value;
+
+            if(firstname=="" || lastname=="" || age==""){
+                display.style.opacity = 1;
+                return ;
+            }
+
+            const requestLink = "http://localhost/user/updateProfile";
+            fetch(requestLink, {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({
+                    firstname: firstname,
+                    lastname: lastname,
+                    age: age
+                })
+            }).then(function (res) {
+                display.style.opacity = 1;
+                clearAllInputs();
+                if (!res.ok) {
+                    return res.json().then(function (json) {
+                        Promise.reject(json);
+                    });
+                }
+                else {
+                    return res.json();
+                }
+            }).then(function (data) {
+                if (data) {
+                    console.log(data);
+                    window.location = "http://localhost/user/myProfile";
+                }
+            }).catch(function (err) {
+                console.log(err);
+            });
+        });
+
+        function clearAllInputs(){
+            input_firstname.value = "";
+            input_lastname.value = "";
+            input_age.value = "";
+        }
+
+    </script>
+</body>
+
+</html>

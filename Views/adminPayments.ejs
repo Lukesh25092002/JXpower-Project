@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Power | Admin | Payments</title>
+    <link rel="stylesheet" href="http://localhost/public/Assets/adminPaymentsStyle.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <a class="button-standard" href="http://localhost/admin/panel">Panel</a>
+    </nav>
+    <section class="section-standard" id="withraw-requests">
+        <h1 class="section-title">User withdraw requests</h1>
+        <% if(withdrawRequests.length==0){ %>
+            <h1 class="nothing">There are no users requests</h1>
+            <% } else { %>
+                <% withdrawRequests.forEach(function(withdrawRequest){ %>
+                    <div class="withdraw-request">
+                        <div class="profile">
+                            <div class="photo">
+                                <img src="<%= `http://localhost/public/Uploads/${withdrawRequest['image']}` %>">
+                            </div>
+                            <p class="username">
+                                <%= withdrawRequest['username'] %>
+                            </p>
+                            <p class="userID" style="color:greenyellow">
+                                <%= String(withdrawRequest['userID']) %>
+                            </p>
+                            <p class="email">
+                                <%= withdrawRequest['email'] %>
+                            </p>
+                        </div>
+
+                        <div class="content">
+                            <div class="details">
+                                <div class="attributes">
+                                    <p>Account holder name </p>
+                                    <p>Account Number</p>
+                                    <p>Bank IFSC code</p>
+                                </div>
+                                <div class="seperation">
+                                    <p>:</p>
+                                    <p>:</p>
+                                    <p>:</p>
+                                </div>
+                                <div class="values">
+                                    <p>
+                                        <%= withdrawRequest['name'] %>
+                                    </p>
+                                    <p>
+                                        <%= withdrawRequest['accountNumber'] %>
+                                    </p>
+                                    <p>
+                                        <%= withdrawRequest['IFSCcode'] %>
+                                    </p>
+                                </div>
+                            </div>
+                            <button class="button-standard delete">Delete</button>
+                        </div>
+                    </div>
+                    <% }); %>
+                        <% } %>
+        <p class="end">The end of all user withdraw requests</p>
+    </section>
+
+    <script>
+        const display = document.querySelector("body");
+        function blockDisplay() {
+            display.style.opacity = 0.75;
+        }
+
+        function unblockDisplay() {
+            display.style.opacity = 1;
+        }
+
+        const allDeleteButton = [...document.querySelectorAll(".withdraw-request .delete")];
+        allDeleteButton.forEach(function (deleteButton) {
+            deleteButton.addEventListener("click", function (event) {
+                blockDisplay();
+                const userID = deleteButton.parentNode.parentNode.querySelector(".profile .userID").innerHTML.trim();
+
+                console.log("The userID is ", userID);
+                const assure = prompt("Enter the userID to confirm", "");
+                if (assure != userID) {
+                    unblockDisplay();
+                    alert("The IDs do not match with each other");
+                    return;
+                }
+
+                const requestLink = "http://localhost/admin/payments";
+                fetch(requestLink, {
+                    method: "DELETE",
+                    headers: { "Content-type": "application/json" },
+                    body: JSON.stringify({
+                        userID: userID
+                    })
+                }).then(function (res) {
+                    unblockDisplay();
+                    if (!res.ok) {
+                        return res.json().then(function (json) {
+                            return Promise.reject(json);
+                        });
+                    }
+                    return res.json();
+                }).then(function (data) {
+                    console.log(data);
+                    alert("Congrulations! The process was successful");
+                    window.location.reload(true);
+                }).catch(function (err) {
+                    console.log(err);
+                    alert("Sorry, The process was unsuccessful");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

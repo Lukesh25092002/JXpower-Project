@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX Power | Verify email</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/public/Assets/verifyUserEmailStyle.css" type="text/css">
+</head>
+<body>
+    <section>
+        <div class="card">
+            <div class="left">
+                <h1>Email Verification</h1>
+                <form action="#">
+                    <div class="form-group">
+                        <label for="OTP">OTP :</label>
+                        <input type="text" id="OTP" required>
+                    </div>
+                    <a href="http://localhost/userAuth/login" id="rememberedPassword">want to login?</a>
+                    <button id="submit" type="button">Submit</button>
+                </form>
+            </div>
+            <div class="right">
+                <img src="http://localhost/public/Images/power-plant-1.jpg">
+                <div class="overlay">
+                    <p>Input the OTP you recieved in your entered email</p>
+                    <p>After you do so your account setup would be completed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const input_OTP = document.getElementById("OTP");
+
+        const submit = document.getElementById("submit");
+        submit.addEventListener("click",function(event){
+            const OTP = input_OTP.value;
+            if(OTP == ""){
+                console.log("OTP value cannot be empty");
+                return ;
+            }
+            console.log("The entered OTP is : "+OTP);
+
+            const requestLink = window.location.href;
+            console.log(requestLink);
+
+            fetch(requestLink,{
+                method: "POST",
+                headers: { "Content-type" : "application/json" },
+                body: JSON.stringify({
+                    OTP: OTP
+                })
+            }).then(function(res){
+                if(!res.ok){
+                    return res.json().then(function(json){
+                        return Promise.reject(json);
+                    });
+                }
+                else{
+                    return res.json();
+                }
+            }).then(function(data){
+                    window.location = "http://localhost/userAuth/login"
+            }).catch(function(err){
+                console.log("This is error");
+                console.log(err);
+            })
+        });
+
+    </script>
+</body>
+</html>

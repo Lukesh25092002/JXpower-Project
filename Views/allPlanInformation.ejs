@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX Power | admin | all plan Information</title>
+    <link rel="stylesheet" href="http://localhost/public/Assets/allPlanInformationStyle.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <a class="button-standard" href="http://localhost/admin/panel">Panel</a>
+    </nav>
+    <section class="section-standard" id="withraw-requests">
+        <h1 class="section-title">All Users so far</h1>
+        <% planInformationRecords.forEach(function(planInformationRecord){ %>
+            <div class="withdraw-request">
+                <div class="profile">
+                    <div class="photo">
+                        <img src="http://localhost/public/Images/<%= planInformationRecord['image'] %>">
+                    </div>
+                    <p>
+                        <%= planInformationRecord['name'] %>
+                    </p>
+                    <p style="color: greenyellow;">
+                        <%= planInformationRecord['_id'] %>
+                    </p>
+                </div>
+
+                <div class="content">
+                    <div class="details">
+                        <div class="attributes">
+                            <p>Duration Type</p>
+                            <p>Daily Income</p>
+                            <p>Total Income</p>
+                            <p>Serving Time</p>
+                            <p>Price</p>
+                        </div>
+                        <div class="seperation">
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                        </div>
+                        <div class="values">
+                            <p>
+                                <%= `${planInformationRecord['type']} Term`%>
+                            </p>
+                            <p>
+                                <%= `₹ ${planInformationRecord['dailyIncome']}`%>
+                            </p>
+                            <p>
+                                <%= `₹ ${planInformationRecord['totalIncome']}`%>
+                            </p>
+                            <p>
+                                <%= `${planInformationRecord['servingTime']} Days`%>
+                            </p>
+                            <p>
+                                <%= `₹ ${planInformationRecord['price']}`%>
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="statistics-container">
+                        <div class="statistics-card">
+                            <h1>Total Purchases</h1>
+                            <p>
+                                <%= planInformationRecord['totalPurchases'] %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+                <p class="end">The end of all user withdraw requests</p>
+    </section>
+</body>
+
+</html>

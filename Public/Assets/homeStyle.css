@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: white;
+}
+
+.button-standard{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background: #00A3FE;
+    padding: 9px 32px;
+    border-radius: 5px;
+}
+
+.button-standard:hover{
+    transform: 300ms;
+    box-shadow: 0 0 0 2px #012965,0 0 0 3px #00A3FE;
+    color: #FFD700;
+}
+
+.button-standard:active{
+box-shadow: 0 0 0 3px #00A3FE;
+background: #012965;
+}
+
+body{
+    background: url("http://localhost/public/Images/green-database.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+
+
+
+
+.section-standard{
+    background: #002047;
+    padding: 50px 150px;
+    padding-bottom: 70px;
+    margin-bottom: 110px;
+}
+
+.section-title{
+    display: block;
+    text-align: center;
+    color: #FFD700;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.section-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.section-content .left p{
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.section-content .right{
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+}
+
+.section-content .right:hover{
+    transition: 1000ms;
+    box-shadow: none;
+}
+
+@media (max-width: 750px){
+    .section-standard{
+        padding: 100px 50px;
+        text-align: center;
+    }
+    .section-content{
+        flex-direction: column;
+    }
+
+    .section-content .right{
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+
+
+
+
+
+
+header{
+    width: 100%;
+    padding: 30px 150px;
+    background-color: pink;
+    box-sizing: border-box;
+}
+
+nav{
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 150px;
+    box-sizing: border-box;
+}
+
+nav .logo{
+    cursor: pointer;
+    width: 100px;
+}
+
+@media (max-width:750px){
+    nav{
+        padding: 5px 50px;
+    }
+}
+
+header{
+    background: url("http://localhost/public/Images/yellow-database.jpg");
+    background-position: center;
+    padding: 100px 150px;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+}
+
+header h1{
+    color: #FFD700;
+    text-shadow: 2px 2px 2px black;
+    font-size: 64px;
+}
+
+header p{
+    font-size: 24px;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 2px black;
+}
+
+@media (max-width: 750px){
+    header{
+        padding: 100px 0px;
+    }
+
+    header p{
+        font-size: 15px;
+    }
+}
+
+
+.feature-card{
+    width: 350px;
+    height: 300px;
+    box-sizing: border-box;
+    width: 350px;
+}
+
+.feature-card img{
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.679);
+}
+
+.feature-card img:hover{
+    transition: 1000ms;
+    box-shadow: none;
+}
+
+.feature-card p{
+    text-align: center;
+    margin-top: 10px;
+}
+
+@media (max-width: 750px){
+    .feature-card{
+        margin: 0 auto;
+    }
+}
+
+.copyright{
+    padding: 20px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copyright p{
+    font-size: 12px;
+    text-align: center;
+}
+
+#who-we-are{
+    background: linear-gradient(rgba(0, 32, 71, 0.95),rgba(0, 32, 71, 0.5)),url("http://localhost/public/Images/investor.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+#feature{
+    background: none;
+}
+
+#investing-takes-time{
+    background: linear-gradient(rgba(0, 32, 71, 0.95),rgba(0, 32, 71, 0.5)),url("http://localhost/public/Images/sand-watch.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+#how-to-invest{
+    background: linear-gradient(rgba(0, 32, 71, 0.95),rgba(0, 32, 71, 0.5)),url("http://localhost/public/Images/question.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+#got-stuck{
+    background: linear-gradient(rgba(0, 32, 71, 0.95),rgba(0, 32, 71, 0.5)),url("http://localhost/public/Images/telephone.jpg");
+    background-position: center;
+    background-size: cover;
+}

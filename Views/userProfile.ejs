@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX Power | UserProfile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/public/Assets/userProfileStyle.css" type="text/css">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <a class="button-standard" href="http://localhost/user/plans">PLANS</a>
+    </nav>
+
+    <section id="profile" class="section-standard">
+        <div class="section-content">
+            <div class="left">
+                <img src=<%= "http://localhost/public/Images/ghost.jpg" %> >
+            </div>
+            <div class="right">
+                <p>Username : <%= username %></p>
+                <p>Email : <%= email %></p>
+                <button class="button-standard" id="logout">LOGOUT</button>
+            </div>
+        </div>
+    </section>
+    <section id="details" class="section-standard">
+        <h1 class="section-title">Personal Details</h1>
+        <div class="section-content">
+            <div class="left">
+                <p>First Name : <%= firstName %></p>
+                <p>Last Name : <%= lastName %></p>
+                <p>Age : <%= age %></p>
+                <p>Referral Link : <%= referralLink %></p>
+            </div>
+            <a class="button-standard" href="http://localhost/user/updateProfile">CHANGE DETAILS</DETAILS></a>
+        </div>
+    </section>
+    <section id="functionality" class="section-standard">
+        <h1 class="section-title">Functionalities</h1>
+        <div class="section-content">
+            <div class="functionality-card">
+                <img src="http://localhost/public/Images/money-wallet.jpg">
+                <div class="overlay">
+                    <a href="http://localhost/user/wallet">Wallet</a>
+                </div>
+            </div>
+    
+            <div class="functionality-card">
+                <img src="http://localhost/public/Images/current-plans.jpg">
+                <div class="overlay">
+                    <a href="http://localhost/user/currentPlans">Current Plans</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact-us" class="section-standard">
+        <h1 class="section-title">Contact Us</h1>
+        <div class="section-content">
+            <div class="left">
+                <p>Have any suggestion or any doubt</p>
+                <p>Our team will try best to reply to you no matter any doubt you have</p>
+            </div>
+            <a class="button-standard" href="http://localhost/user/contactUs">CONTACT US</a>
+        </div>
+    </section>
+
+    <script>
+        const logout = document.getElementById("logout");
+
+        logout.addEventListener("click",function(event){
+            fetch("http://localhost/userAuth/logout",{
+                method: "POST",
+            })
+            .then(function(res){
+                if(!res.ok){
+                    return res.json().then(function(json){
+                        Promise.reject(json);
+                    });
+                }
+                return res.json();
+            })
+            .then(function(data){
+                window.location = "http://localhost/userAuth/login";
+                console.log(data);
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+        });
+
+        
+
+    </script>
+</body>
+
+</html>

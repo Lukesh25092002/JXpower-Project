@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+body{
+    background: #002047;
+}
+
+.section-standard{
+    background: #002047;
+    padding: 50px 150px;
+    padding-bottom: 70px;
+    margin-bottom: 110px;
+}
+
+.section-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-standard{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background: #00A3FE;
+    padding: 9px 32px;
+    border-radius: 5px;
+}
+
+.button-standard:hover{
+    transform: 300ms;
+    box-shadow: 0 0 0 2px #012965,0 0 0 3px #00A3FE;
+    color: #FFD700;
+}
+
+.button-standard:active{
+box-shadow: 0 0 0 3px #00A3FE;
+background: #012965;
+}
+
+
+
+
+
+nav{
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 150px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+}
+
+nav .logo{
+    cursor: pointer;
+    width: 100px;
+}
+
+@media (max-width:750px){
+    nav{
+        padding: 5px 50px;
+    }
+}
+
+
+.plan-card{
+    width: 330px;
+    background: #012965;
+    border: 5px solid #105177;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 20px 40px;
+    color: white;
+    box-shadow: 0 0 10px #011028;
+}
+
+.plan-card:hover{
+    transition: 700ms;
+    box-shadow: none;
+}
+
+.plan-card .plan-name{
+    font-size: 25px;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.plan-card .picture{
+    width: 100%;
+    height: 150px;
+    margin: 20px 0;
+}
+
+.plan-card .content{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.plan-card .content p{
+    display: inline-block;
+}
+
+.plan-card .content p:nth-of-type(2){
+    color: #FFD700;
+}
+
+.section-content .button-standard{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-content h1{
+    color: #FFD700;
+    text-align: center;
+    padding: 10px 0;
+}
+
+@media (max-width:750px){
+    .section-standard{
+        padding: 50px 0;
+    }
+    .section-content{
+        flex-direction: column;
+        gap: 70px;
+    }
+
+    .plan-card{
+        display: block;
+        margin: 0 auto;
+    }
+}

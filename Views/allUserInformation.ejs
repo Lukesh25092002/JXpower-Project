@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Power | Admin | Payments</title>
+    <link rel="stylesheet" href="http://localhost/public/Assets/allUserInformationStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <a class="button-standard" href="http://localhost/admin/panel">Panel</a>
+    </nav>
+    <section class="section-standard" id="withraw-requests">
+        <h1 class="section-title">All Users so far</h1>
+        <% userInformationRecords.forEach(function(userInformationRecord){ %>
+            <div class="withdraw-request">
+                <div class="profile">
+                    <div class="photo">
+                        <img src="http://localhost/public/Images/default-user.png">
+                    </div>
+                    <p>
+                        <%= userInformationRecord['username'] %>
+                    </p>
+                    <p style="color: greenyellow;">
+                        <%= userInformationRecord['userID'] %>
+                    </p>
+                    <p>
+                        <%= userInformationRecord['email'] %>
+                    </p>
+                </div>
+
+                <div class="content">
+                    <div class="details">
+                        <div class="attributes">
+                            <p>First name</p>
+                            <p>Last name</p>
+                            <p>Age</p>
+                            <p>Wallet Balance</p>
+                            <p>Short plan</p>
+                            <p>Short plan expiry</p>
+                            <p>Long plan</p>
+                            <p>Long plan expiry</p>
+                        </div>
+                        <div class="seperation">
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                        </div>
+                        <div class="values">
+                            <p>
+                                <% if(userInformationRecord['firstName']){ %>
+                                    <%= userInformationRecord['firstName'] %>
+                                        <% } else { %>
+                                            <%= "Empty" %>
+                                                <% } %>
+                            </p>
+                            <p>
+                                <% if(userInformationRecord['lastName']){ %>
+                                    <%= userInformationRecord['lastName'] %>
+                                        <% } else { %>
+                                            <%= "Empty" %>
+                                                <% } %>
+                            </p>
+                            <p>
+                                <% if(userInformationRecord['age']){ %>
+                                    <%= userInformationRecord['age'] %>
+                                        <% } else { %>
+                                            <%= "Empty" %>
+                                                <% } %>
+                            </p>
+                            <p>
+                                Rs. <%= userInformationRecord['currentWalletBalance'] %>
+                            </p>
+                            <% if(userInformationRecord['currentShortTermPlanID']){ %>
+                                <p><%= userInformationRecord['currentShortTermPlanID'] %></p>
+                                <p><%= `${userInformationRecord['currentShortTermPlanExpiryDate'].getHours()}:${userInformationRecord['currentShortTermPlanExpiryDate'].getHours()}   ${userInformationRecord['currentShortTermPlanExpiryDate'].getDate()}/${userInformationRecord['currentShortTermPlanExpiryDate'].getMonth()}/${userInformationRecord['currentShortTermPlanExpiryDate'].getFullYear()}` %></p>
+                            <% } else { %>
+                                <p>Empty</p>
+                                <p>Empty</p>
+                            <% } %>
+
+                            <% if(userInformationRecord['currentLongTermPlanID']){ %>
+                                <p><%= userInformationRecord['currentLongTermPlanID'] %></p>
+                                <p><%= `${userInformationRecord['currentLongTermPlanExpiryDate'].getHours()}:${userInformationRecord['currentLongTermPlanExpiryDate'].getHours()}   ${userInformationRecord['currentLongTermPlanExpiryDate'].getDate()}/${userInformationRecord['currentLongTermPlanExpiryDate'].getMonth()}/${userInformationRecord['currentLongTermPlanExpiryDate'].getFullYear()}` %></p>
+                            <% } else { %>
+                                <p>Empty</p>
+                                <p>Empty</p>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="statistics-container">
+                        <div class="statistics-card">
+                            <h1>Total withdraw</h1>
+                            <p>₹ <%= String(parseInt(userInformationRecord['totalWithdraw'])*350) %>
+                            </p>
+                        </div>
+                        <div class="statistics-card">
+                            <h1>Total Purchases</h1>
+                            <p>
+                                <%= userInformationRecord['totalPurchases'] %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+            <p class="end">The end of all user withdraw requests</p>
+    </section>
+</body>
+
+</html>

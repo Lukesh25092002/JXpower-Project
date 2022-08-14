@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Power | User | Current Plans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/public/Assets/currentPlansStyle.css" type="text/css">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="http://localhost/public/Images/logo.png">
+        <a class="button-standard" href="http://localhost/user/myProfile">Profile</a>
+    </nav>
+
+    <section class="section-standard">
+        <div class="section-content">
+            <div class="left">
+                <h1>Your Short Term Plans</h1>
+                <% if(shortTermPlan){ %>
+                    <div class="plan-card">
+                        <h1 class="plan-name">
+                            <%= shortTermPlan['name'] %>
+                        </h1>
+                        <img class="picture" src=<%=`http://localhost/public/Images/${shortTermPlan['image']}` %>>
+                        <div class="content">
+                            <p>Daily Income:</p>
+                            <p>₹ <%= shortTermPlan['dailyIncome'] %></p>
+                        </div>
+                        <div class="content">
+                            <p>Total income:</p>
+                            <p>₹ <%= shortTermPlan['totalIncome'] %></p>
+                        </div>
+                        <div class="content">
+                            <p>Serving time:</p>
+                            <p><%= shortTermPlan['servingTime'] %> Days</p>
+                        </div>
+                        <div class="content">
+                            <p>Expiry Date:</p>
+                            <p><%= `${shortTermPlan['expiryDate'].getHours()}:${shortTermPlan['expiryDate'].getMinutes()}  ${shortTermPlan['expiryDate'].getDate()}-${shortTermPlan['expiryDate'].getMonth()}-${shortTermPlan['expiryDate'].getFullYear()}` %></p>
+                        </div>
+                    </div>
+                    <% } else { %>
+                        <div class="plan-card">
+                            <h1 class="plan-name">No Plan</h1>
+                            <h1 class="plan-name" style="font-size: 12px;">You currently dont have any short term plan</h1>
+                            <a href="http://localhost/user/plans" class="button-standard">Buy plan</a>
+                        </div>
+                        <% } %>
+
+
+            </div>
+
+            <div class="right">
+                <h1>Your Long Term Plans</h1>
+                <% if(longTermPlan){ %>
+                    <div class="plan-card">
+                        <h1 class="plan-name">
+                            <%= longTermPlan['name'] %>
+                        </h1>
+                        <img class="picture" src=<%=`http://localhost/public/Images/${longTermPlan['image']}` %>>
+                        <div class="content">
+                            <p>Daily Income:</p>
+                            <p>₹ <%= longTermPlan['dailyIncome'] %></p>
+                        </div>
+                        <div class="content">
+                            <p>Total income:</p>
+                            <p>₹ <%= longTermPlan['totalIncome'] %>
+                            </p>
+                        </div>
+                        <div class="content">
+                            <p>Serving time:</p>
+                            <p><%= longTermPlan['servingTime'] %> Days</p>
+                        </div>
+                        <div class="content">
+                            <p>Expiry Date:</p>
+                            <p><%= `${longTermPlan['expiryDate'].getHours()}:${longTermPlan['expiryDate'].getMinutes()}  ${longTermPlan['expiryDate'].getDate()}-${longTermPlan['expiryDate'].getMonth()}-${longTermPlan['expiryDate'].getFullYear()}` %></p>
+                        </div>
+                    </div>
+                    <% } else { %>
+                        <div class="plan-card">
+                            <h1 class="plan-name">No Plan</h1>
+                            <h1 class="plan-name" style="font-size: 12px;">You currently dont have any short term plan</h1>
+                            <a href="http://localhost/user/plans" class="button-standard">Buy plan</a>
+                        </div>
+                    <% } %>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        console.log("hi");
+        /*
+
+        
+        */
+
+    </script>
+</body>
+
+</html>
